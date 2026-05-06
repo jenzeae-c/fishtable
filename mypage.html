@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마이페이지 — 어부의 식탁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --yellow:#fcf00c;--blue:#0149d0;--black:#000;--white:#fff;
+  --gray-100:#f5f5f5;--gray-200:#ebebeb;--gray-400:#aaa;--gray-600:#666;
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
+
+/* NAV */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--gray-200);height:var(--nav-h)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:17px;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-0.01em;display:flex;align-items:center;gap:4px}
+.logo-dot{display:inline-block;background:var(--yellow);width:8px;height:8px;border-radius:50%;border:1.5px solid var(--black)}
+nav{display:flex;gap:36px}
+nav a{font-size:13px;font-weight:500;color:var(--black);text-decoration:none;letter-spacing:0.12em;position:relative;padding-bottom:2px}
+nav a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:2px;background:var(--yellow);transition:right .25s ease}
+nav a:hover::after{right:0}
+.nav-actions{display:flex;align-items:center;gap:16px}
+.nav-actions a{font-size:12px;font-weight:400;color:var(--gray-600);text-decoration:none;transition:color .2s;letter-spacing:.05em}
+.nav-actions a:hover{color:var(--black)}
+.nav-actions a.active{color:var(--black);font-weight:700}
+.cart-pill{background:var(--black)!important;color:var(--white)!important;font-weight:500!important;padding:8px 18px!important;border-radius:100px!important;font-size:12px!important;letter-spacing:.08em!important;transition:background .2s!important}
+.cart-pill:hover{background:var(--blue)!important;color:var(--white)!important}
+
+/* PAGE HERO */
+.page-hero{margin-top:var(--nav-h);background:var(--black);padding:72px 40px 68px;position:relative;overflow:hidden}
+.page-hero-deco{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:260px;color:rgba(255,255,255,.04);white-space:nowrap;letter-spacing:.05em;user-select:none;pointer-events:none}
+.page-hero-inner{max-width:1400px;margin:0 auto;position:relative}
+.page-hero-eyebrow{font-size:10px;font-weight:500;letter-spacing:.35em;color:var(--yellow);margin-bottom:14px}
+.page-hero-title{font-size:clamp(30px,4vw,56px);font-weight:700;color:var(--white);letter-spacing:-0.03em;line-height:1.1;margin-bottom:12px}
+.page-hero-sub{font-size:14px;font-weight:300;color:rgba(255,255,255,.5);letter-spacing:.03em}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--gray-100);border-bottom:1px solid var(--gray-200);padding:12px 40px}
+.breadcrumb-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:8px}
+.breadcrumb a,.breadcrumb span{font-size:11px;font-weight:400;color:var(--gray-600);text-decoration:none;letter-spacing:.05em}
+.breadcrumb a:hover{color:var(--black)}
+.breadcrumb .sep{color:var(--gray-400)}
+.breadcrumb .current{color:var(--black);font-weight:500}
+
+/* MYPAGE LAYOUT */
+.mypage-wrap{max-width:1400px;margin:0 auto;padding:64px 40px 100px;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start}
+
+/* SIDEBAR NAV */
+.side-nav{position:sticky;top:calc(var(--nav-h) + 24px)}
+.side-nav-title{font-size:10px;font-weight:700;letter-spacing:.25em;color:var(--black);margin-bottom:16px;padding-bottom:10px;border-bottom:1.5px solid var(--black)}
+.side-nav ul{list-style:none;display:flex;flex-direction:column;gap:2px}
+.side-nav ul li a{display:block;font-size:13px;font-weight:400;color:var(--gray-600);text-decoration:none;padding:9px 12px;border-radius:2px;letter-spacing:.02em;transition:background .15s,color .15s}
+.side-nav ul li a:hover{background:var(--gray-100);color:var(--black)}
+.side-nav ul li a.active{background:var(--black);color:var(--white);font-weight:500}
+
+/* MAIN CONTENT */
+.mypage-content{min-width:0}
+
+/* SECTION BLOCKS */
+.mp-section{margin-bottom:56px}
+.mp-section:last-child{margin-bottom:0}
+.mp-section-head{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1.5px solid var(--black);padding-bottom:16px;margin-bottom:28px}
+.mp-section-eyebrow{font-size:10px;font-weight:500;letter-spacing:.3em;color:var(--blue);margin-bottom:6px}
+.mp-section-title{font-size:clamp(18px,2vw,26px);font-weight:700;color:var(--black);letter-spacing:-0.02em;line-height:1.1}
+.mp-section-sub{font-size:12px;font-weight:300;color:var(--gray-600);letter-spacing:.02em}
+
+/* MEMBERSHIP TIERS — FULL PAGE VERSION */
+.fish-tiers-page{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
+.fish-tier-card{border:1px solid var(--gray-200);border-radius:2px;padding:28px 26px;transition:border-color .2s,box-shadow .2s;position:relative}
+.fish-tier-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(1,73,208,.08)}
+.ftc-head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.ftc-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;font-weight:700;color:var(--white);flex-shrink:0}
+.ftc-icon.f{background:var(--blue)}
+.ftc-icon.i{background:#2c7a2c}
+.ftc-icon.s{background:#b07d0a}
+.ftc-icon.h{background:#8b1a1a}
+.ftc-meta{}
+.ftc-name{font-size:15px;font-weight:700;color:var(--black);letter-spacing:-0.01em;margin-bottom:3px}
+.ftc-cond{font-size:11px;font-weight:300;color:var(--gray-600)}
+.ftc-divider{height:1px;background:var(--gray-200);margin-bottom:16px}
+.ftc-benefits{display:flex;flex-direction:column;gap:7px}
+.ftc-benefit{font-size:13px;font-weight:300;color:var(--gray-600);display:flex;align-items:center;gap:9px;line-height:1.5}
+.ftc-benefit::before{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.fish-tier-card.tier-h .ftc-benefit::before{background:#8b1a1a}
+.fish-tier-card.tier-s .ftc-benefit::before{background:#b07d0a}
+.fish-tier-card.tier-i .ftc-benefit::before{background:#2c7a2c}
+
+/* TIER BADGE — TOP RIGHT */
+.ftc-badge{position:absolute;top:18px;right:18px;font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--gray-400);border:1px solid var(--gray-200);padding:3px 8px;border-radius:100px}
+
+/* MEMBERSHIP PROGRESS — PLACEHOLDER */
+.membership-notice{background:var(--gray-100);border-radius:2px;padding:20px 24px;display:flex;align-items:center;gap:14px}
+.notice-icon{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--blue);line-height:1;flex-shrink:0}
+.notice-text{font-size:12px;font-weight:300;color:var(--gray-600);line-height:1.8}
+.notice-text strong{font-weight:700;color:var(--black)}
+
+/* SIGNUP SECTION — STRUCTURE PLACEHOLDER */
+.signup-box{border:1px solid var(--gray-200);border-radius:2px;padding:44px 40px;text-align:center}
+.signup-box-title{font-size:20px;font-weight:700;color:var(--black);letter-spacing:-0.02em;margin-bottom:8px}
+.signup-box-sub{font-size:13px;font-weight:300;color:var(--gray-600);line-height:1.8;margin-bottom:32px}
+.signup-methods{display:flex;flex-direction:column;gap:10px;max-width:360px;margin:0 auto 24px}
+.social-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 0;border:none;border-radius:4px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:filter .2s}
+.social-btn:hover{filter:brightness(.93)}
+.btn-kakao{background:#fee500;color:#3c1e1e}
+.btn-naver{background:#03c75a;color:var(--white)}
+.signup-divider{display:flex;align-items:center;gap:12px;max-width:360px;margin:0 auto 24px}
+.signup-divider::before,.signup-divider::after{content:'';flex:1;height:1px;background:var(--gray-200)}
+.signup-divider span{font-size:11px;font-weight:300;color:var(--gray-400);letter-spacing:.05em;white-space:nowrap}
+/* Email form — hidden until implemented */
+.signup-form-placeholder{max-width:360px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.signup-form-placeholder input{width:100%;padding:13px 16px;border:1px solid var(--gray-200);border-radius:2px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:300;color:var(--black);outline:none;transition:border-color .2s;background:var(--white)}
+.signup-form-placeholder input:focus{border-color:var(--black)}
+.signup-form-placeholder input::placeholder{color:var(--gray-400)}
+.signup-submit-btn{width:100%;background:var(--black);color:var(--white);border:none;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;padding:14px 0;cursor:pointer;border-radius:2px;transition:background .2s;margin-top:4px}
+.signup-submit-btn:hover{background:var(--blue)}
+.signup-login-link{font-size:12px;font-weight:300;color:var(--gray-600)}
+.signup-login-link a{color:var(--black);font-weight:500;text-decoration:none;border-bottom:1px solid var(--black)}
+.signup-login-link a:hover{color:var(--blue);border-color:var(--blue)}
+/* TODO marker for dev reference */
+.todo-marker{display:inline-block;background:var(--yellow);color:var(--black);font-size:9px;font-weight:700;letter-spacing:.15em;padding:2px 7px;border-radius:100px;margin-left:8px;vertical-align:middle}
+
+/* FOOTER */
+footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px 40px 36px}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid var(--gray-200);margin-bottom:28px}
+.footer-logo{font-size:17px;font-weight:700;color:var(--black);letter-spacing:-0.01em;margin-bottom:14px;display:flex;align-items:center;gap:4px}
+.footer-desc{font-size:12px;font-weight:300;color:var(--gray-600);line-height:1.9}
+.fcol-title{font-size:10px;font-weight:700;letter-spacing:.25em;color:var(--black);margin-bottom:16px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:9px}
+.fcol ul li a{font-size:13px;font-weight:300;color:var(--gray-600);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--black)}
+.fcontact{font-size:13px;font-weight:300;color:var(--gray-600);line-height:1.9}
+.fcontact strong{font-weight:700;color:var(--black)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:11px;font-weight:300;color:var(--gray-400);line-height:1.8;letter-spacing:.02em}
+.footer-legal{display:flex;gap:16px}
+.footer-legal a{font-size:11px;font-weight:400;color:var(--gray-400);text-decoration:none;transition:color .2s}
+.footer-legal a:hover{color:var(--black)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .mypage-wrap{grid-template-columns:1fr;gap:32px}
+  .side-nav{position:static}
+  .fish-tiers-page{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:680px){
+  .nav-inner{padding:0 20px}
+  nav{gap:20px}
+  .page-hero{padding:52px 20px 48px}
+  .breadcrumb{padding:12px 20px}
+  .mypage-wrap{padding:40px 20px 80px}
+  footer{padding:40px 20px 28px}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start}
+  .signup-box{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-inner">
+    <a href="fishtable_index3.html" class="logo">어부의 식탁 <span class="logo-dot"></span></a>
+    <nav>
+      <a href="fishtable_index3.html#story">STORY</a>
+      <a href="fishtable_index3.html#shop">SHOP</a>
+      <a href="fishtable_index3.html#event">EVENT</a>
+      <a href="fishtable_index3.html#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#">로그인</a>
+      <a href="mypage.html" class="active">마이페이지</a>
+      <a href="#" class="cart-pill">장바구니 0</a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-deco">MYPAGE</div>
+  <div class="page-hero-inner">
+    <p class="page-hero-eyebrow">FISH TABLE</p>
+    <h1 class="page-hero-title">마이페이지</h1>
+    <p class="page-hero-sub">내 멤버십 등급과 혜택을 확인하세요</p>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="fishtable_index3.html">홈</a>
+    <span class="sep">›</span>
+    <span class="current">마이페이지</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="mypage-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="side-nav">
+    <p class="side-nav-title">MYPAGE</p>
+    <ul>
+      <li><a href="#membership" class="active">멤버십 안내</a></li>
+      <li><a href="#signup">회원가입</a></li>
+      <li><a href="#">주문내역</a></li>
+      <li><a href="#">쿠폰함</a></li>
+      <li><a href="#">배송지 관리</a></li>
+      <li><a href="#">계정 설정</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="mypage-content">
+
+    <!-- MEMBERSHIP SECTION -->
+    <section class="mp-section" id="membership">
+      <div class="mp-section-head">
+        <div>
+          <p class="mp-section-eyebrow">FISH MEMBERSHIP</p>
+          <h2 class="mp-section-title">멤버십 안내</h2>
+        </div>
+        <p class="mp-section-sub">구매 금액에 따라 자동 승급</p>
+      </div>
+
+      <div class="fish-tiers-page">
+
+        <!-- First -->
+        <div class="fish-tier-card tier-f">
+          <span class="ftc-badge">ENTRY</span>
+          <div class="ftc-head">
+            <div class="ftc-icon f">F</div>
+            <div class="ftc-meta">
+              <div class="ftc-name">First</div>
+              <div class="ftc-cond">회원가입 시</div>
+            </div>
+          </div>
+          <div class="ftc-divider"></div>
+          <div class="ftc-benefits">
+            <span class="ftc-benefit">3,000원 웰컴 쿠폰 증정</span>
+            <span class="ftc-benefit">첫 구매 무료배송</span>
+          </div>
+        </div>
+
+        <!-- Interest -->
+        <div class="fish-tier-card tier-i">
+          <span class="ftc-badge">REGULAR</span>
+          <div class="ftc-head">
+            <div class="ftc-icon i">I</div>
+            <div class="ftc-meta">
+              <div class="ftc-name">Interest</div>
+              <div class="ftc-cond">3회 이상 구매 시</div>
+            </div>
+          </div>
+          <div class="ftc-divider"></div>
+          <div class="ftc-benefits">
+            <span class="ftc-benefit">베스트 상품 3% 할인</span>
+            <span class="ftc-benefit">무료배송 쿠폰 발급</span>
+          </div>
+        </div>
+
+        <!-- Standard -->
+        <div class="fish-tier-card tier-s">
+          <span class="ftc-badge">LOYAL</span>
+          <div class="ftc-head">
+            <div class="ftc-icon s">S</div>
+            <div class="ftc-meta">
+              <div class="ftc-name">Standard</div>
+              <div class="ftc-cond">30만원 이상 구매 시</div>
+            </div>
+          </div>
+          <div class="ftc-divider"></div>
+          <div class="ftc-benefits">
+            <span class="ftc-benefit">베스트 상품 3% 할인</span>
+            <span class="ftc-benefit">무료배송 쿠폰 발급</span>
+          </div>
+        </div>
+
+        <!-- Hyper -->
+        <div class="fish-tier-card tier-h">
+          <span class="ftc-badge">VIP</span>
+          <div class="ftc-head">
+            <div class="ftc-icon h">H</div>
+            <div class="ftc-meta">
+              <div class="ftc-name">Hyper</div>
+              <div class="ftc-cond">50만원 이상 구매 시</div>
+            </div>
+          </div>
+          <div class="ftc-divider"></div>
+          <div class="ftc-benefits">
+            <span class="ftc-benefit">전 상품 5% 할인</span>
+            <span class="ftc-benefit">신메뉴 선구매 혜택</span>
+            <span class="ftc-benefit">선물 포장 서비스</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="membership-notice">
+        <div class="notice-icon">F</div>
+        <p class="notice-text"><strong>현재 등급 : First</strong><br>회원가입 후 구매 실적에 따라 자동으로 등급이 업그레이드됩니다.</p>
+      </div>
+    </section>
+
+    <!-- SIGNUP SECTION -->
+    <section class="mp-section" id="signup">
+      <div class="mp-section-head">
+        <div>
+          <p class="mp-section-eyebrow">ACCOUNT</p>
+          <h2 class="mp-section-title">회원가입<span class="todo-marker">COMING SOON</span></h2>
+        </div>
+      </div>
+
+      <div class="signup-box">
+        <h3 class="signup-box-title">지금 가입하고 혜택 받기</h3>
+        <p class="signup-box-sub">가입 즉시 3,000원 웰컴 쿠폰 자동 발급<br>첫 구매 무료배송 혜택까지 드립니다</p>
+
+        <div class="signup-methods">
+          <a href="#" class="social-btn btn-kakao">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#3c1e1e"><path d="M12 3C6.48 3 2 6.72 2 11.3c0 2.9 1.87 5.46 4.72 6.93l-1.2 4.43 4.95-3.24A11.9 11.9 0 0 0 12 19.6c5.52 0 10-3.72 10-8.3S17.52 3 12 3z"/></svg>
+            카카오톡으로 계속하기
+          </a>
+          <a href="#" class="social-btn btn-naver">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M16.27 12.84 7.4 0H0v24h7.73V11.16L16.6 24H24V0h-7.73z"/></svg>
+            네이버로 계속하기
+          </a>
+        </div>
+
+        <div class="signup-divider"><span>또는 이메일로 가입</span></div>
+
+        <!-- 이메일 가입 폼 — 추후 구현 -->
+        <div class="signup-form-placeholder">
+          <input type="text" placeholder="이름" disabled>
+          <input type="email" placeholder="이메일" disabled>
+          <input type="password" placeholder="비밀번호" disabled>
+          <input type="password" placeholder="비밀번호 확인" disabled>
+          <button class="signup-submit-btn" disabled>회원가입 (준비 중)</button>
+        </div>
+
+        <br>
+        <p class="signup-login-link">이미 계정이 있으신가요? <a href="#">로그인</a></p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">어부의 식탁 <span class="logo-dot"></span></div>
+        <p class="footer-desc">바다의 신선함과 땅의 영양을 모아<br>여러분의 식탁으로 건강함을 전합니다.</p>
+      </div>
+      <div class="fcol">
+        <p class="fcol-title">NAVIGATE</p>
+        <ul>
+          <li><a href="fishtable_index3.html#story">STORY</a></li>
+          <li><a href="fishtable_index3.html#shop">SHOP</a></li>
+          <li><a href="fishtable_index3.html#event">EVENT</a></li>
+          <li><a href="fishtable_index3.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <p class="fcol-title">ACCOUNT</p>
+        <ul>
+          <li><a href="#">로그인</a></li>
+          <li><a href="#signup">회원가입</a></li>
+          <li><a href="#">주문내역</a></li>
+          <li><a href="mypage.html">마이페이지</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <p class="fcol-title">CUSTOMER SERVICE</p>
+        <p class="fcontact"><strong>070-8648-2403</strong></p>
+        <p class="fcontact">AM 9:00 — PM 6:00</p>
+        <p class="fcontact">주말 · 공휴일 휴무</p>
+        <br>
+        <p class="fcontact">IBK기업은행 008-160965-01-011</p>
+        <p class="fcontact">예금주 (주)어부의 식탁</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">(주)어부의 식탁 · 대표 홍유식 · 사업자등록번호 875-81-01829 · 통신판매업신고 제 2022-서울도봉-0787호<br>서울특별시 도봉구 마들로 684-19 (도봉동) 서원상가 301호 · © 2025 Fish Table. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">이용안내</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
