@@ -881,6 +881,141 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 .faq-answer-inner{padding:0 4px 22px;font-size:13px;font-weight:300;color:var(--gray-600);line-height:1.9}
 .faq-item.open .faq-answer{max-height:300px}
 
+/* ════════════════════════════════════════
+   HAMBURGER & MOBILE NAV
+════════════════════════════════════════ */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:6px;flex-shrink:0}
+.hamburger span{display:block;height:2px;background:var(--black);border-radius:2px;transition:transform .3s ease,opacity .3s ease,width .3s ease}
+.hamburger span:nth-child(1){width:22px}
+.hamburger span:nth-child(2){width:16px}
+.hamburger span:nth-child(3){width:22px}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);width:22px}
+.hamburger.open span:nth-child(2){opacity:0;width:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);width:22px}
+
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--white);z-index:1500;flex-direction:column;padding:0}
+.mobile-nav.open{display:flex}
+.mobile-nav-header{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--gray-200)}
+.mobile-nav-logo{font-size:17px;font-weight:700;color:var(--black);text-decoration:none;display:flex;align-items:center;gap:4px}
+.mobile-nav-close{background:none;border:none;font-size:26px;cursor:pointer;color:var(--gray-600);line-height:1;padding:0;transition:color .2s}
+.mobile-nav-close:hover{color:var(--black)}
+.mobile-nav-body{flex:1;overflow-y:auto;padding:32px 24px 40px}
+.mobile-nav-section{margin-bottom:36px}
+.mobile-nav-label{font-size:9px;font-weight:700;letter-spacing:.3em;color:var(--gray-400);margin-bottom:14px}
+.mobile-nav-links{display:flex;flex-direction:column;gap:0}
+.mobile-nav-links a{font-size:22px;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-.01em;padding:12px 0;border-bottom:1px solid var(--gray-100);display:block;transition:color .2s}
+.mobile-nav-links a:hover{color:var(--blue)}
+.mobile-nav-sub{display:flex;flex-direction:column;gap:0}
+.mobile-nav-sub a{font-size:14px;font-weight:400;color:var(--gray-600);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--gray-100);display:block;transition:color .2s}
+.mobile-nav-sub a:hover{color:var(--black)}
+.mobile-nav-footer{padding:20px 24px;border-top:1px solid var(--gray-200)}
+.mobile-nav-cta{display:block;width:100%;background:var(--black);color:var(--white);text-decoration:none;text-align:center;font-size:14px;font-weight:700;letter-spacing:.1em;padding:16px 0;border-radius:100px;transition:background .2s}
+.mobile-nav-cta:hover{background:var(--blue)}
+
+/* ════════════════════════════════════════
+   TABLET  769px – 1024px
+════════════════════════════════════════ */
+@media(min-width:769px) and (max-width:1024px){
+  .nav-inner{padding:0 24px}
+  .wrap{padding:0 24px}
+  .product-grid{grid-template-columns:repeat(3,1fr)}
+  .review-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .fish-tiers-page{grid-template-columns:repeat(2,1fr)}
+  .featured-inner{padding:0 24px}
+  .featured-grid{grid-template-columns:1fr 1px 1fr}
+  .story-inner{gap:48px}
+  .cart-page-inner{padding:60px 24px 100px}
+}
+
+/* ════════════════════════════════════════
+   MOBILE  max-width 768px
+════════════════════════════════════════ */
+@media(max-width:768px){
+
+  /* --- global --- */
+  img{max-width:100%;height:auto}
+  .wrap{padding:0 20px}
+
+  /* --- nav --- */
+  nav{display:none}
+  .nav-actions{display:none}
+  .hamburger{display:flex}
+  .nav-inner{padding:0 16px}
+
+  /* --- carousel --- */
+  .hero-carousel{aspect-ratio:4/5}
+  .carousel-btn{width:36px;height:36px;font-size:15px}
+  .carousel-prev{left:12px}
+  .carousel-next{right:12px}
+
+  /* --- marquee --- */
+  .marquee-wrap{overflow:hidden}
+
+  /* --- featured --- */
+  .featured-inner{padding:0 20px}
+  .featured-grid{grid-template-columns:1fr;gap:0}
+  .featured-divider{display:none}
+  .featured-card{padding:32px 20px}
+  .featured-header{margin-bottom:32px}
+
+  /* --- shop --- */
+  .shop-section{padding:56px 0 72px}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .shop-head{flex-direction:column;align-items:flex-start;gap:12px}
+
+  /* --- best --- */
+  .best-section{padding:56px 0 72px}
+  .best-grid{grid-template-columns:1fr}
+
+  /* --- story --- */
+  .story-section{padding:64px 0}
+  .story-inner{grid-template-columns:1fr;gap:40px;padding:0 20px}
+  .story-deco{font-size:120px}
+  .story-stats{grid-template-columns:1fr 1fr}
+
+  /* --- cta strip --- */
+  .cta-strip{padding:48px 20px}
+
+  /* --- review --- */
+  .review-section{padding:64px 0 72px}
+  .review-grid{grid-template-columns:1fr}
+
+  /* --- faq --- */
+  .faq-section{padding:64px 0 72px}
+  .faq-q-text{font-size:13px}
+
+  /* --- footer --- */
+  footer{padding:44px 20px 32px}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start}
+
+  /* --- modal (mypage) --- */
+  .modal-box{width:100%;border-left:none;border-right:none;margin-top:var(--nav-h)}
+
+  /* --- cart page --- */
+  .cart-page-inner{padding:60px 20px 100px}
+  .cart-item{grid-template-columns:72px 1fr;gap:14px}
+  .cart-item-img{width:72px;height:72px}
+  .cart-item-right{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--gray-100)}
+  .cart-summary{padding:20px 18px}
+
+  /* --- float coupon --- */
+  .float-coupon-wrap{bottom:20px;right:14px}
+  .float-coupon{width:130px;padding:18px 20px 14px}
+  .float-coupon-amount{font-size:38px}
+
+  /* --- typography scale (titles ~80%) --- */
+  .best-title{font-size:clamp(18px,5.5vw,28px)}
+  .shop-title{font-size:clamp(18px,5.5vw,28px)}
+  .story-heading{font-size:clamp(22px,6.5vw,36px)}
+  .cta-strip-title{font-size:clamp(18px,6vw,28px)}
+  .review-title{font-size:clamp(18px,5.5vw,28px)}
+  .faq-title{font-size:clamp(18px,5.5vw,28px)}
+  .featured-title{font-size:clamp(18px,5.5vw,28px)}
+  .stat-num{font-size:40px}
+}
+
 </style>
 </head>
 <body>
@@ -897,12 +1032,46 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
     </nav>
     <div class="nav-actions">
       <a href="#">로그인</a>
-      <a href="mypage.html">회원가입</a>
-      <a href="mypage.html" id="mypageBtn">마이페이지</a>
+      <a href="mypage_mobile.html">회원가입</a>
+      <a href="mypage_mobile.html" id="mypageBtn">마이페이지</a>
       <a href="#" class="cart-pill" id="cartBtn" onclick="openCart(event)">장바구니 <span id="cartCount">0</span></a>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <a href="#" class="mobile-nav-logo">어부의 식탁 <span class="logo-dot"></span></a>
+    <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="메뉴 닫기">&#215;</button>
+  </div>
+  <div class="mobile-nav-body">
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-label">NAVIGATE</p>
+      <div class="mobile-nav-links">
+        <a href="#story" onclick="toggleMobileNav()">STORY</a>
+        <a href="#shop" onclick="toggleMobileNav()">SHOP</a>
+        <a href="#event" onclick="toggleMobileNav()">EVENT</a>
+        <a href="#faq" onclick="toggleMobileNav()">FAQ</a>
+      </div>
+    </div>
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-label">ACCOUNT</p>
+      <div class="mobile-nav-sub">
+        <a href="#">로그인</a>
+        <a href="mypage_mobile.html">회원가입</a>
+        <a href="mypage_mobile.html">마이페이지</a>
+        <a href="#" onclick="openCart(event);toggleMobileNav()">장바구니</a>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav-footer">
+    <a href="mypage_mobile.html" class="mobile-nav-cta">회원가입 → 지금 5% 쿠폰 받기</a>
+  </div>
+</div>
 
 <!-- CAROUSEL -->
 <section class="hero-carousel">
@@ -925,13 +1094,13 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="marquee-item">FISH TABLE <span class="marquee-sep"></span></span>
+    <span class="marquee-item">FISHERMAN'S TABLE <span class="marquee-sep"></span></span>
     <span class="marquee-item">국내산 꼬막비빔밥 <span class="marquee-sep"></span></span>
     <span class="marquee-item">무방부제 건강 간편식 <span class="marquee-sep"></span></span>
     <span class="marquee-item">바다의 신선함 <span class="marquee-sep"></span></span>
     <span class="marquee-item">어부의 식탁 <span class="marquee-sep"></span></span>
     <span class="marquee-item">FREE DELIVERY <span class="marquee-sep"></span></span>
-    <span class="marquee-item">FISH TABLE <span class="marquee-sep"></span></span>
+    <span class="marquee-item">FISHERMAN'S TABLE <span class="marquee-sep"></span></span>
     <span class="marquee-item">국내산 꼬막비빔밥 <span class="marquee-sep"></span></span>
     <span class="marquee-item">무방부제 건강 간편식 <span class="marquee-sep"></span></span>
     <span class="marquee-item">바다의 신선함 <span class="marquee-sep"></span></span>
@@ -951,7 +1120,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
     </div>
     <div class="featured-grid reveal reveal-delay-1">
 
-      <div class="featured-card" onclick="goToProduct(2)" style="cursor:pointer">
+      <div class="featured-card">
         <span class="featured-badge rep">대표메뉴</span>
         <div class="featured-img-wrap">
           <img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/f204add62d99d19c3b75a3a5691943c7.png" alt="날치알 곤드레비빔밥">
@@ -963,12 +1132,12 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
           <span class="featured-price">17,700</span>
           <span class="featured-won">원</span>
         </div>
-        <button class="featured-btn" onclick="event.stopPropagation();addToCart('날치알 곤드레비빔밥',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/f204add62d99d19c3b75a3a5691943c7.png')">장바구니 담기</button>
+        <button class="featured-btn" onclick="addToCart('날치알 곤드레비빔밥',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/f204add62d99d19c3b75a3a5691943c7.png')">장바구니 담기</button>
       </div>
 
       <div class="featured-divider"></div>
 
-      <div class="featured-card" onclick="goToProduct(1)" style="cursor:pointer">
+      <div class="featured-card">
         <span class="featured-badge sig">시그니처메뉴</span>
         <div class="featured-img-wrap">
           <img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/big/20260320/430a030e253ce7bdb99320105ffd783b.png" alt="민물장어 곤드레비빔밥">
@@ -981,7 +1150,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
           <span class="featured-price">15,800</span>
           <span class="featured-won">원</span>
         </div>
-        <button class="featured-btn" onclick="event.stopPropagation();addToCart('민물장어 곤드레비빔밥',15800,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/big/20260320/430a030e253ce7bdb99320105ffd783b.png')">장바구니 담기</button>
+        <button class="featured-btn" onclick="addToCart('민물장어 곤드레비빔밥',15800,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/big/20260320/430a030e253ce7bdb99320105ffd783b.png')">장바구니 담기</button>
       </div>
 
     </div>
@@ -1000,75 +1169,75 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
     </div>
         <div class="product-grid reveal reveal-delay-1">
       <!-- 1 -->
-      <div class="product-card" onclick="goToProduct(8)">
+      <div class="product-card">
         <div class="pimg-wrap"><img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/42a69012064b104b3c36951c969342af.jpg" alt=""></div>
         <div class="pinfo">
           <p class="pname">해산물 비빔밥 6종 선택 (최소 4개 선택 기본)</p>
           <div class="price-row"><span class="p-del">23,600원</span><span class="p-main">19,600</span><span class="p-won">원</span></div>
-          <button class="pcart-btn" onclick="event.stopPropagation();addToCart('해산물 비빔밥 6종 선택 (최소 4개 선택 기본)',19600,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/42a69012064b104b3c36951c969342af.jpg')">장바구니 담기</button>
+          <button class="pcart-btn" onclick="addToCart('해산물 비빔밥 6종 선택 (최소 4개 선택 기본)',19600,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/42a69012064b104b3c36951c969342af.jpg')">장바구니 담기</button>
         </div>
       </div>
       <!-- 2 -->
-      <div class="product-card" onclick="goToProduct(2)">
+      <div class="product-card">
         <div class="pimg-wrap"><img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/f204add62d99d19c3b75a3a5691943c7.png" alt=""></div>
         <div class="pinfo">
           <p class="pname">날치알 곤드레비빔밥 230g × 3ea</p>
           <div class="price-row"><span class="p-main">17,700</span><span class="p-won">원</span></div>
-          <button class="pcart-btn" onclick="event.stopPropagation();addToCart('날치알 곤드레비빔밥 230g × 3ea',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/f204add62d99d19c3b75a3a5691943c7.png')">장바구니 담기</button>
+          <button class="pcart-btn" onclick="addToCart('날치알 곤드레비빔밥 230g × 3ea',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/f204add62d99d19c3b75a3a5691943c7.png')">장바구니 담기</button>
         </div>
       </div>
       <!-- 3 -->
-      <div class="product-card" onclick="goToProduct(3)">
+      <div class="product-card">
         <div class="pimg-wrap"><img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/2ca05e1ed6165146e3cdab555b0342b2.png" alt=""></div>
         <div class="pinfo">
           <p class="pname">어부의식탁 전주비빔밥 230g × 3ea</p>
           <div class="price-row"><span class="p-main">17,700</span><span class="p-won">원</span></div>
-          <button class="pcart-btn" onclick="event.stopPropagation();addToCart('어부의식탁 전주비빔밥 230g × 3ea',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/2ca05e1ed6165146e3cdab555b0342b2.png')">장바구니 담기</button>
+          <button class="pcart-btn" onclick="addToCart('어부의식탁 전주비빔밥 230g × 3ea',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/2ca05e1ed6165146e3cdab555b0342b2.png')">장바구니 담기</button>
         </div>
       </div>
       <!-- 4 -->
-      <div class="product-card" onclick="goToProduct(4)">
+      <div class="product-card">
         <div class="pimg-wrap"><img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20250221/66dae3fdfbf4919206ab4d7c172b25b1.png" alt=""></div>
         <div class="pinfo">
           <p class="pname">매콤가리비 곤드레비빔밥 230g × 3ea</p>
           <div class="price-row"><span class="p-main">15,000</span><span class="p-won">원</span></div>
-          <button class="pcart-btn" onclick="event.stopPropagation();addToCart('매콤가리비 곤드레비빔밥 230g × 3ea',15000,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20250221/66dae3fdfbf4919206ab4d7c172b25b1.png')">장바구니 담기</button>
+          <button class="pcart-btn" onclick="addToCart('매콤가리비 곤드레비빔밥 230g × 3ea',15000,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20250221/66dae3fdfbf4919206ab4d7c172b25b1.png')">장바구니 담기</button>
         </div>
       </div>
       <!-- 5 -->
-      <div class="product-card" onclick="goToProduct(5)">
+      <div class="product-card">
         <div class="pimg-wrap"><img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/b475767966cb75c982e1452feb493373.png" alt=""></div>
         <div class="pinfo">
           <p class="pname">간장가리비 곤드레비빔밥 230g × 3ea</p>
           <div class="price-row"><span class="p-main">15,000</span><span class="p-won">원</span></div>
-          <button class="pcart-btn" onclick="event.stopPropagation();addToCart('간장가리비 곤드레비빔밥 230g × 3ea',15000,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/b475767966cb75c982e1452feb493373.png')">장바구니 담기</button>
+          <button class="pcart-btn" onclick="addToCart('간장가리비 곤드레비빔밥 230g × 3ea',15000,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20260320/b475767966cb75c982e1452feb493373.png')">장바구니 담기</button>
         </div>
       </div>
       <!-- 6 -->
-      <div class="product-card" onclick="goToProduct(6)">
+      <div class="product-card">
         <div class="pimg-wrap"><img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20240807/342f2e491b017d455811aa211165c014.png" alt=""></div>
         <div class="pinfo">
           <p class="pname">매콤꼬막 곤드레비빔밥 230g × 3ea</p>
           <div class="price-row"><span class="p-main">17,700</span><span class="p-won">원</span></div>
-          <button class="pcart-btn" onclick="event.stopPropagation();addToCart('매콤꼬막 곤드레비빔밥 230g × 3ea',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20240807/342f2e491b017d455811aa211165c014.png')">장바구니 담기</button>
+          <button class="pcart-btn" onclick="addToCart('매콤꼬막 곤드레비빔밥 230g × 3ea',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20240807/342f2e491b017d455811aa211165c014.png')">장바구니 담기</button>
         </div>
       </div>
       <!-- 7 -->
-      <div class="product-card" onclick="goToProduct(7)">
+      <div class="product-card">
         <div class="pimg-wrap"><img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20240807/c1376ad941c970a67d3e8a7d9b28a0e6.png" alt=""></div>
         <div class="pinfo">
           <p class="pname">간장꼬막 곤드레비빔밥 230g × 3ea</p>
           <div class="price-row"><span class="p-main">17,700</span><span class="p-won">원</span></div>
-          <button class="pcart-btn" onclick="event.stopPropagation();addToCart('간장꼬막 곤드레비빔밥 230g × 3ea',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20240807/c1376ad941c970a67d3e8a7d9b28a0e6.png')">장바구니 담기</button>
+          <button class="pcart-btn" onclick="addToCart('간장꼬막 곤드레비빔밥 230g × 3ea',17700,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/medium/20240807/c1376ad941c970a67d3e8a7d9b28a0e6.png')">장바구니 담기</button>
         </div>
       </div>
       <!-- 8 -->
-      <div class="product-card" onclick="goToProduct(1)">
+      <div class="product-card">
         <div class="pimg-wrap"><img src="https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/big/20260320/430a030e253ce7bdb99320105ffd783b.png" alt=""></div>
         <div class="pinfo">
           <p class="pname">민물장어 곤드레비빔밥 230g × 2ea</p>
           <div class="price-row"><span class="p-del">19,800원</span><span class="p-main">15,800</span><span class="p-won">원</span></div>
-          <button class="pcart-btn" onclick="event.stopPropagation();addToCart('민물장어 곤드레비빔밥 230g × 2ea',15800,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/big/20260320/430a030e253ce7bdb99320105ffd783b.png')">장바구니 담기</button>
+          <button class="pcart-btn" onclick="addToCart('민물장어 곤드레비빔밥 230g × 2ea',15800,'https://ecimg.cafe24img.com/pg201b44379595091/fishtable2022/web/product/big/20260320/430a030e253ce7bdb99320105ffd783b.png')">장바구니 담기</button>
         </div>
       </div>
     </div>
@@ -1077,7 +1246,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 
 <!-- STORY -->
 <section class="story-section" id="story">
-  <div class="story-deco">FISH TABLE</div>
+  <div class="story-deco">FISHERMAN</div>
   <div class="story-inner reveal">
     <div>
       <p class="story-label">OUR STORY</p>
@@ -1293,7 +1462,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">(주)어부의 식탁 · 대표 홍유식 · 사업자등록번호 875-81-01829 · 통신판매업신고 제 2022-서울도봉-0787호<br>서울특별시 도봉구 마들로 684-19 (도봉동) 서원상가 301호 · © 2025 Fish Table. All rights reserved.</p>
+      <p class="footer-copy">(주)어부의 식탁 · 대표 홍유식 · 사업자등록번호 875-81-01829 · 통신판매업신고 제 2022-서울도봉-0787호<br>서울특별시 도봉구 마들로 684-19 (도봉동) 서원상가 301호 · © 2025 Fisherman's Table. All rights reserved.</p>
       <div class="footer-legal">
         <a href="#">이용약관</a>
         <a href="#">개인정보처리방침</a>
@@ -1390,15 +1559,13 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 </div>
 
 <script>
-var CART_KEY = "eobu_cart";
-var cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+var cart = [];
 
 function fmt(n) { return Number(n).toLocaleString("ko-KR"); }
 
 function addToCart(name, price, img) {
   var ex = cart.find(function(i) { return i.name === name; });
   if (ex) { ex.qty += 1; } else { cart.push({name:name, price:price, img:img, qty:1}); }
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
   updateCartCount();
   showCartToast(name);
 }
@@ -1439,14 +1606,12 @@ function closeCart() {
 function changeQty(idx, delta) {
   cart[idx].qty += delta;
   if (cart[idx].qty <= 0) cart.splice(idx, 1);
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
   updateCartCount();
   renderCart();
 }
 
 function removeItem(idx) {
   cart.splice(idx, 1);
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
   updateCartCount();
   renderCart();
 }
@@ -1568,10 +1733,6 @@ function claimFloatCoupon() {
   alert("쿠폰이 발급되었습니다!");
 }
 
-updateCartCount();
-
-function goToProduct(id) { window.location.href = 'product.html?id=' + id; }
-
 /* ── SCROLL REVEAL ── */
 (function() {
   var observer = new IntersectionObserver(function(entries) {
@@ -1596,6 +1757,22 @@ function toggleFaq(btn) {
     el.classList.remove("open");
   });
   if (!isOpen) item.classList.add("open");
+}
+
+/* ── MOBILE NAV TOGGLE ── */
+function toggleMobileNav() {
+  var nav = document.getElementById("mobileNav");
+  var btn = document.getElementById("hamburger");
+  var isOpen = nav.classList.contains("open");
+  if (isOpen) {
+    nav.classList.remove("open");
+    btn.classList.remove("open");
+    document.body.style.overflow = "";
+  } else {
+    nav.classList.add("open");
+    btn.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
 }
 </script>
 </body>
