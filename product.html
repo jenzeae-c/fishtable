@@ -10,7 +10,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --yellow:#fcf00c;--blue:#0149d0;--black:#000;--white:#fff;
+  --yellow:#fff475;--blue:#3759bf;--black:#000;--white:#fff;
   --gray-100:#f5f5f5;--gray-200:#ebebeb;--gray-400:#aaa;--gray-600:#666;
   --nav-h:64px;
 }
@@ -20,8 +20,12 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--white);color:var(--b
 /* NAV */
 header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--gray-200);height:var(--nav-h)}
 .nav-inner{max-width:1400px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:17px;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-0.01em;display:flex;align-items:center;gap:4px}
+.logo{font-size:17px;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-0.01em;display:flex;align-items:center;gap:8px}
 .logo-dot{display:inline-block;background:var(--yellow);width:8px;height:8px;border-radius:50%;border:1.5px solid var(--black)}
+.logo-img{height:36px;width:auto;object-fit:contain;flex-shrink:0}
+.logo-text-wrap{display:flex;flex-direction:column;gap:1px}
+.logo-name{font-size:15px;font-weight:700;line-height:1.2;letter-spacing:-0.01em}
+.logo-tagline{font-size:9px;font-weight:300;color:var(--gray-600);letter-spacing:.05em}
 nav{display:flex;gap:36px}
 nav a{font-size:13px;font-weight:500;color:var(--black);text-decoration:none;letter-spacing:0.12em;position:relative;padding-bottom:2px}
 nav a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:2px;background:var(--yellow);transition:right .25s ease}
@@ -94,7 +98,7 @@ nav a:hover::after{right:0}
 .pd-btn-cart{background:var(--black);color:var(--white);border:none;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;padding:15px 0;cursor:pointer;transition:background .2s;letter-spacing:.08em}
 .pd-btn-cart:hover{background:var(--blue)}
 .pd-btn-buy{grid-column:1/-1;background:var(--blue);color:var(--white);border:none;font-family:'Noto Sans KR',sans-serif;font-size:15px;font-weight:700;padding:18px 0;cursor:pointer;transition:background .2s,transform .15s;letter-spacing:.08em}
-.pd-btn-buy:hover{background:#0038a8;transform:translateY(-1px)}
+.pd-btn-buy:hover{background:#2d4ea3;transform:translateY(-1px)}
 
 /* Feature chips */
 .pd-features{display:flex;flex-wrap:wrap;gap:10px}
@@ -161,7 +165,7 @@ nav a:hover::after{right:0}
 footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px 40px 36px}
 .footer-inner{max-width:1400px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid var(--gray-200);margin-bottom:28px}
-.footer-logo{font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:14px;display:flex;align-items:center;gap:4px}
+.footer-logo{font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .footer-desc{font-size:12px;font-weight:300;color:var(--gray-600);line-height:1.9}
 .fcol-title{font-size:10px;font-weight:700;letter-spacing:.25em;margin-bottom:16px}
 .fcol ul{list-style:none}
@@ -211,7 +215,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 .cart-total-label{font-size:16px;font-weight:700}
 .cart-total-val{font-size:24px;font-weight:700;color:var(--blue)}
 .checkout-btn{display:block;width:100%;margin-top:20px;background:var(--blue);color:var(--white);border:none;font-family:'Noto Sans KR',sans-serif;font-size:16px;font-weight:700;letter-spacing:.05em;padding:18px 0;cursor:pointer;transition:background .2s,transform .15s}
-.checkout-btn:hover{background:#0038a8;transform:translateY(-1px)}
+.checkout-btn:hover{background:#2d4ea3;transform:translateY(-1px)}
 .continue-btn{display:block;width:100%;margin-top:10px;background:none;color:var(--gray-600);border:1px solid var(--gray-200);font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;padding:14px 0;cursor:pointer;transition:border-color .2s,color .2s}
 .continue-btn:hover{border-color:var(--black);color:var(--black)}
 
@@ -222,7 +226,8 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 .modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--gray-400);line-height:1;margin-top:-4px;transition:color .2s}
 .modal-close:hover{color:var(--black)}
 .modal-title{font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px;clear:both}
-.modal-sub{font-size:12px;font-weight:300;color:var(--gray-600);margin-bottom:28px}
+.modal-sub{font-size:12px;font-weight:300;color:var(--gray-600);margin-bottom:12px}
+.modal-family-msg{font-size:14px;font-weight:500;color:var(--blue);text-align:center;margin-bottom:20px;letter-spacing:-.01em}
 .modal-cta-text{font-size:14px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:-0.01em;line-height:1.5}
 .social-btns{display:flex;flex-direction:column;gap:10px}
 .social-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 0;border:none;border-radius:4px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:filter .2s}
@@ -244,9 +249,15 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 
 <header>
   <div class="nav-inner">
-    <a href="fishtable_index3.html" class="logo">어부의 식탁 <span class="logo-dot"></span></a>
+    <a href="fishtable_index3.html" class="logo">
+      <img src="fishtable_logo.png" alt="어부의식탁" class="logo-img">
+      <span class="logo-text-wrap">
+        <span class="logo-name">어부의식탁</span>
+        <span class="logo-tagline">바다를 담아, 온기를 전하다</span>
+      </span>
+    </a>
     <nav>
-      <a href="fishtable_index3.html#story">STORY</a>
+      <a href="story.html">STORY</a>
       <a href="fishtable_index3.html#shop">SHOP</a>
       <a href="fishtable_index3.html#event">EVENT</a>
       <a href="fishtable_index3.html#faq">FAQ</a>
@@ -425,13 +436,19 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-logo">어부의 식탁 <span class="logo-dot"></span></div>
+        <div class="footer-logo">
+          <img src="fishtable_logo.png" alt="어부의식탁" class="logo-img">
+          <span class="logo-text-wrap">
+            <span class="logo-name">어부의식탁</span>
+            <span class="logo-tagline">바다를 담아, 온기를 전하다</span>
+          </span>
+        </div>
         <p class="footer-desc">바다의 신선함과 땅의 영양을 모아<br>여러분의 식탁으로 건강함을 전합니다.</p>
       </div>
       <div class="fcol">
         <p class="fcol-title">NAVIGATE</p>
         <ul>
-          <li><a href="fishtable_index3.html#story">STORY</a></li>
+          <li><a href="story.html">STORY</a></li>
           <li><a href="fishtable_index3.html#shop">SHOP</a></li>
           <li><a href="fishtable_index3.html#event">EVENT</a></li>
           <li><a href="fishtable_index3.html#faq">FAQ</a></li>
@@ -482,6 +499,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
     <button class="modal-close" onclick="closeMypage()">&#215;</button>
     <h2 class="modal-title">회원 혜택</h2>
     <p class="modal-sub">로그인하고 등급별 혜택을 누리세요</p>
+    <p class="modal-family-msg">어부의 식탁 가족이 되어주세요</p>
     <p class="modal-cta-text">SNS로 3초 만에 가입하기</p>
     <div class="social-btns">
       <a href="#" class="social-btn btn-kakao">카카오로 시작하기</a>
@@ -734,7 +752,7 @@ function doCheckout() { alert("주문이 완료되었습니다! 감사합니다.
 function renderCart() {
   var el = document.getElementById("cartContent");
   if (cart.length === 0) {
-    el.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">&#128722;</div><p class="cart-empty-text">장바구니가 비어 있습니다.</p><a href="fishtable_index3.html" class="cart-empty-link">쇼핑 계속하기</a></div>';
+    el.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">&#128722;</div><p class="cart-empty-text">아직 담긴 메뉴가 없어요.</p><a href="fishtable_index3.html" class="cart-empty-link">쇼핑 계속하기</a></div>';
     return;
   }
   var h = '<div class="cart-items">';
@@ -758,9 +776,9 @@ function renderCart() {
     '<div class="cart-summary-row"><span class="cart-summary-label">상품 금액 ('+qty+'개)</span><span class="cart-summary-val">'+fmt(tot)+'원</span></div>' +
     '<div class="cart-summary-row"><span class="cart-summary-label">배송비</span><span class="cart-summary-val">'+delStr+'</span></div>' +
     '<hr class="cart-summary-divider">' +
-    '<div class="cart-summary-row"><span class="cart-total-label">총 결제금액</span><span class="cart-total-val">'+fmt(tot+del)+'원</span></div>' +
+    '<div class="cart-summary-row"><span class="cart-total-label">오늘의 식탁 합계</span><span class="cart-total-val">'+fmt(tot+del)+'원</span></div>' +
   '</div>' +
-  '<button class="checkout-btn" onclick="doCheckout()">결제하기</button>' +
+  '<button class="checkout-btn" onclick="doCheckout()">식탁 차리기</button>' +
   '<button class="continue-btn" onclick="closeCart()">쇼핑 계속하기</button>';
   el.innerHTML = h;
 }

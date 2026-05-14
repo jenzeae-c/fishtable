@@ -10,7 +10,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --yellow:#fcf00c;--blue:#0149d0;--black:#000;--white:#fff;
+  --yellow:#fff475;--blue:#3759bf;--black:#000;--white:#fff;
   --gray-100:#f5f5f5;--gray-200:#ebebeb;--gray-400:#aaa;--gray-600:#666;
   --nav-h:64px;
 }
@@ -20,8 +20,12 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--white);color:var(--b
 /* NAV */
 header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--gray-200);height:var(--nav-h)}
 .nav-inner{max-width:1400px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:17px;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-0.01em;display:flex;align-items:center;gap:4px}
+.logo{font-size:17px;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-0.01em;display:flex;align-items:center;gap:8px}
 .logo-dot{display:inline-block;background:var(--yellow);width:8px;height:8px;border-radius:50%;border:1.5px solid var(--black)}
+.logo-img{height:36px;width:auto;object-fit:contain;flex-shrink:0}
+.logo-text-wrap{display:flex;flex-direction:column;gap:1px}
+.logo-name{font-size:15px;font-weight:700;line-height:1.2;letter-spacing:-0.01em}
+.logo-tagline{font-size:9px;font-weight:300;color:var(--gray-600);letter-spacing:.05em}
 nav{display:flex;gap:36px}
 nav a{font-size:13px;font-weight:500;color:var(--black);text-decoration:none;letter-spacing:0.12em;position:relative;padding-bottom:2px}
 nav a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:2px;background:var(--yellow);transition:right .25s ease}
@@ -74,7 +78,7 @@ nav a:hover::after{right:0}
 /* MEMBERSHIP TIERS — FULL PAGE VERSION */
 .fish-tiers-page{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
 .fish-tier-card{border:1px solid var(--gray-200);border-radius:2px;padding:28px 26px;transition:border-color .2s,box-shadow .2s;position:relative}
-.fish-tier-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(1,73,208,.08)}
+.fish-tier-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(55,89,191,.08)}
 .ftc-head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
 .ftc-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;font-weight:700;color:var(--white);flex-shrink:0}
 .ftc-icon.f{background:var(--blue)}
@@ -130,7 +134,7 @@ nav a:hover::after{right:0}
 footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px 40px 36px}
 .footer-inner{max-width:1400px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid var(--gray-200);margin-bottom:28px}
-.footer-logo{font-size:17px;font-weight:700;color:var(--black);letter-spacing:-0.01em;margin-bottom:14px;display:flex;align-items:center;gap:4px}
+.footer-logo{font-size:17px;font-weight:700;color:var(--black);letter-spacing:-0.01em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .footer-desc{font-size:12px;font-weight:300;color:var(--gray-600);line-height:1.9}
 .fcol-title{font-size:10px;font-weight:700;letter-spacing:.25em;color:var(--black);margin-bottom:16px}
 .fcol ul{list-style:none}
@@ -170,9 +174,15 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 <!-- HEADER -->
 <header>
   <div class="nav-inner">
-    <a href="fishtable_index3.html" class="logo">어부의 식탁 <span class="logo-dot"></span></a>
+    <a href="fishtable_index3.html" class="logo">
+      <img src="fishtable_logo.png" alt="어부의식탁" class="logo-img">
+      <span class="logo-text-wrap">
+        <span class="logo-name">어부의식탁</span>
+        <span class="logo-tagline">바다를 담아, 온기를 전하다</span>
+      </span>
+    </a>
     <nav>
-      <a href="fishtable_index3.html#story">STORY</a>
+      <a href="story.html">STORY</a>
       <a href="fishtable_index3.html#shop">SHOP</a>
       <a href="fishtable_index3.html#event">EVENT</a>
       <a href="fishtable_index3.html#faq">FAQ</a>
@@ -190,8 +200,8 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
   <div class="page-hero-deco">MYPAGE</div>
   <div class="page-hero-inner">
     <p class="page-hero-eyebrow">FISH TABLE</p>
-    <h1 class="page-hero-title">마이페이지</h1>
-    <p class="page-hero-sub">내 멤버십 등급과 혜택을 확인하세요</p>
+    <h1 class="page-hero-title">나의 식탁</h1>
+    <p class="page-hero-sub">오늘도 수고하셨어요</p>
   </div>
 </section>
 
@@ -213,7 +223,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
     <ul>
       <li><a href="#membership" class="active">멤버십 안내</a></li>
       <li><a href="#signup">회원가입</a></li>
-      <li><a href="#">주문내역</a></li>
+      <li><a href="#">지난 식탁 기록</a></li>
       <li><a href="#">쿠폰함</a></li>
       <li><a href="#">배송지 관리</a></li>
       <li><a href="#">계정 설정</a></li>
@@ -235,13 +245,13 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 
       <div class="fish-tiers-page">
 
-        <!-- First -->
+        <!-- Friend -->
         <div class="fish-tier-card tier-f">
           <span class="ftc-badge">ENTRY</span>
           <div class="ftc-head">
             <div class="ftc-icon f">F</div>
             <div class="ftc-meta">
-              <div class="ftc-name">First</div>
+              <div class="ftc-name">Friend</div>
               <div class="ftc-cond">회원가입 시</div>
             </div>
           </div>
@@ -252,13 +262,13 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
           </div>
         </div>
 
-        <!-- Interest -->
+        <!-- Intimate -->
         <div class="fish-tier-card tier-i">
           <span class="ftc-badge">REGULAR</span>
           <div class="ftc-head">
             <div class="ftc-icon i">I</div>
             <div class="ftc-meta">
-              <div class="ftc-name">Interest</div>
+              <div class="ftc-name">Intimate</div>
               <div class="ftc-cond">3회 이상 구매 시</div>
             </div>
           </div>
@@ -269,13 +279,13 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
           </div>
         </div>
 
-        <!-- Standard -->
+        <!-- Share -->
         <div class="fish-tier-card tier-s">
           <span class="ftc-badge">LOYAL</span>
           <div class="ftc-head">
             <div class="ftc-icon s">S</div>
             <div class="ftc-meta">
-              <div class="ftc-name">Standard</div>
+              <div class="ftc-name">Share</div>
               <div class="ftc-cond">30만원 이상 구매 시</div>
             </div>
           </div>
@@ -286,13 +296,13 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
           </div>
         </div>
 
-        <!-- Hyper -->
+        <!-- Home -->
         <div class="fish-tier-card tier-h">
           <span class="ftc-badge">VIP</span>
           <div class="ftc-head">
             <div class="ftc-icon h">H</div>
             <div class="ftc-meta">
-              <div class="ftc-name">Hyper</div>
+              <div class="ftc-name">Home</div>
               <div class="ftc-cond">50만원 이상 구매 시</div>
             </div>
           </div>
@@ -308,7 +318,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
 
       <div class="membership-notice">
         <div class="notice-icon">F</div>
-        <p class="notice-text"><strong>현재 등급 : First</strong><br>회원가입 후 구매 실적에 따라 자동으로 등급이 업그레이드됩니다.</p>
+        <p class="notice-text"><strong>현재 등급 : Friend</strong><br>회원가입 후 구매 실적에 따라 자동으로 등급이 업그레이드됩니다.</p>
       </div>
     </section>
 
@@ -360,13 +370,19 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-logo">어부의 식탁 <span class="logo-dot"></span></div>
+        <div class="footer-logo">
+          <img src="fishtable_logo.png" alt="어부의식탁" class="logo-img">
+          <span class="logo-text-wrap">
+            <span class="logo-name">어부의식탁</span>
+            <span class="logo-tagline">바다를 담아, 온기를 전하다</span>
+          </span>
+        </div>
         <p class="footer-desc">바다의 신선함과 땅의 영양을 모아<br>여러분의 식탁으로 건강함을 전합니다.</p>
       </div>
       <div class="fcol">
         <p class="fcol-title">NAVIGATE</p>
         <ul>
-          <li><a href="fishtable_index3.html#story">STORY</a></li>
+          <li><a href="story.html">STORY</a></li>
           <li><a href="fishtable_index3.html#shop">SHOP</a></li>
           <li><a href="fishtable_index3.html#event">EVENT</a></li>
           <li><a href="fishtable_index3.html#faq">FAQ</a></li>
@@ -377,7 +393,7 @@ footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px
         <ul>
           <li><a href="#">로그인</a></li>
           <li><a href="#signup">회원가입</a></li>
-          <li><a href="#">주문내역</a></li>
+          <li><a href="#">지난 식탁 기록</a></li>
           <li><a href="mypage.html">마이페이지</a></li>
         </ul>
       </div>

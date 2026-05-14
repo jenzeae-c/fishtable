@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브랜드 스토리 — 어부의 식탁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --yellow:#fff475;--blue:#3759bf;--black:#000;--white:#fff;
+  --gray-100:#f5f5f5;--gray-200:#ebebeb;--gray-400:#aaa;--gray-600:#666;
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
+
+/* ── NAV ── */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--gray-200);height:var(--nav-h)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:17px;font-weight:700;color:var(--black);text-decoration:none;letter-spacing:-0.01em;display:flex;align-items:center;gap:8px}
+.logo-img{height:36px;width:auto;object-fit:contain;flex-shrink:0}
+.logo-text-wrap{display:flex;flex-direction:column;gap:1px}
+.logo-name{font-size:15px;font-weight:700;line-height:1.2;letter-spacing:-0.01em}
+.logo-tagline{font-size:9px;font-weight:300;color:var(--gray-600);letter-spacing:.05em}
+nav{display:flex;gap:36px}
+nav a{font-size:13px;font-weight:500;color:var(--black);text-decoration:none;letter-spacing:.12em;position:relative;padding-bottom:2px}
+nav a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:2px;background:var(--yellow);transition:right .25s ease}
+nav a:hover::after{right:0}
+nav a.active::after{right:0}
+.nav-actions{display:flex;align-items:center;gap:16px}
+.nav-actions a{font-size:12px;font-weight:400;color:var(--gray-600);text-decoration:none;transition:color .2s;letter-spacing:.05em}
+.nav-actions a:hover{color:var(--black)}
+.cart-pill{background:var(--black)!important;color:var(--white)!important;font-weight:500!important;padding:8px 18px!important;border-radius:100px!important;font-size:12px!important;letter-spacing:.08em!important;transition:background .2s!important}
+.cart-pill:hover{background:var(--blue)!important;color:var(--white)!important}
+
+/* ── INTRO ── */
+.story-intro{margin-top:var(--nav-h);padding:100px 40px 80px;text-align:center;border-bottom:1px solid var(--gray-200)}
+.story-intro-label{font-size:10px;font-weight:700;letter-spacing:.35em;color:var(--blue);margin-bottom:22px}
+.story-intro-title{font-size:clamp(30px,5vw,58px);font-weight:700;color:var(--black);letter-spacing:-0.03em;line-height:1.2}
+.story-intro-title em{color:var(--blue);font-style:normal}
+
+/* ── CONTENT COLUMN ── */
+.story-col{max-width:680px;margin:0 auto;padding:0 40px;text-align:center}
+
+/* Lead */
+.story-lead{padding:80px 0;font-size:clamp(17px,2.2vw,22px);font-weight:500;color:var(--black);line-height:1.9;letter-spacing:-0.01em}
+
+/* Paragraph groups */
+.story-para-group{padding:0 0 80px}
+.story-para{font-size:15px;font-weight:300;color:#333;line-height:1.95;letter-spacing:.01em}
+.story-para+.story-para{margin-top:36px}
+
+/* Highlight — yellow background like a marker */
+mark{background:var(--yellow);color:var(--black);padding:1px 4px;font-style:normal;font-weight:400}
+
+/* ── IMAGES ── */
+.story-img-wrap{max-width:720px;margin:0 auto 80px;padding:0 40px;text-align:center}
+.story-img-wrap img{width:100%;height:auto;display:block}
+
+/* ── CLOSING ── */
+.story-closing{text-align:center;padding:120px 40px;border-top:1.5px solid var(--black)}
+.story-closing-logo{max-width:200px;width:100%;height:auto;display:block;margin:0 auto 36px}
+.story-closing-slogan{font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--black);letter-spacing:-0.02em;line-height:1.4}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.revealed{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.12s}
+.reveal-delay-2{transition-delay:.24s}
+
+/* ── FOOTER ── */
+footer{background:var(--white);border-top:1px solid var(--gray-200);padding:52px 40px 36px}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid var(--gray-200);margin-bottom:28px}
+.footer-logo{font-size:17px;font-weight:700;color:var(--black);letter-spacing:-0.01em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.footer-desc{font-size:12px;font-weight:300;color:var(--gray-600);line-height:1.9}
+.fcol-title{font-size:10px;font-weight:700;letter-spacing:.25em;color:var(--black);margin-bottom:16px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:9px}
+.fcol ul li a{font-size:13px;font-weight:300;color:var(--gray-600);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--black)}
+.fcontact{font-size:13px;font-weight:300;color:var(--gray-600);line-height:1.9}
+.fcontact strong{font-weight:700;color:var(--black)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:11px;font-weight:300;color:var(--gray-400);line-height:1.8;letter-spacing:.02em}
+.footer-legal{display:flex;gap:16px}
+.footer-legal a{font-size:11px;font-weight:400;color:var(--gray-400);text-decoration:none;transition:color .2s}
+.footer-legal a:hover{color:var(--black)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-inner{padding:0 20px}
+  nav{gap:20px}
+  .story-intro{padding:72px 20px 60px}
+  .story-col{padding:0 20px}
+  .story-img-wrap{padding:0 20px}
+  .story-closing{padding:80px 20px}
+  footer{padding:40px 20px 28px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start}
+}
+@media(max-width:480px){
+  nav{gap:16px}
+  nav a{font-size:12px;letter-spacing:.08em}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-inner">
+    <a href="fishtable_index3.html" class="logo">
+      <img src="fishtable_logo.png" alt="어부의식탁" class="logo-img">
+      <span class="logo-text-wrap">
+        <span class="logo-name">어부의식탁</span>
+        <span class="logo-tagline">바다를 담아, 온기를 전하다</span>
+      </span>
+    </a>
+    <nav>
+      <a href="story.html" class="active">STORY</a>
+      <a href="fishtable_index3.html#shop">SHOP</a>
+      <a href="fishtable_index3.html#event">EVENT</a>
+      <a href="fishtable_index3.html#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#">로그인</a>
+      <a href="mypage.html">회원가입</a>
+      <a href="mypage.html">마이페이지</a>
+      <a href="#" class="cart-pill">장바구니 0</a>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="story-intro">
+  <p class="story-intro-label">BRAND STORY</p>
+  <h1 class="story-intro-title">바다를 담아,<br><em>온기를 전하다</em></h1>
+</section>
+
+<!-- CONTENT -->
+
+<!-- 1) 첫 단락 -->
+<div class="story-col">
+  <div class="story-lead reveal">
+    서울의 작은 자취방에도<br>따뜻한 한 끼는 필요하니까.
+  </div>
+</div>
+
+<!-- 2) 이미지 1 -->
+<div class="story-img-wrap reveal">
+  <img src="./story/1_hometown.png" alt="고향의 바다">
+</div>
+
+<!-- 3) 두 번째 단락 -->
+<div class="story-col">
+  <div class="story-para-group reveal">
+    <p class="story-para">어렸을 적, 바다와 가까운 지방의 작은 동네에서 자랐습니다.<br>식탁에는 늘 갓 구운 생선과 따뜻한 국,<br>그리고 어머니의 손맛이 담긴 집밥이 있었습니다.</p>
+  </div>
+</div>
+
+<!-- 4) 이미지 2 -->
+<div class="story-img-wrap reveal">
+  <img src="./story/2_sity.png" alt="서울의 도시">
+</div>
+
+<!-- 5) 세 번째 단락 -->
+<div class="story-col">
+  <div class="story-para-group reveal">
+    <p class="story-para">하지만 사회초년생이 되어 서울로 올라온 뒤,<br>하루를 버티듯 살아가는 자취 생활 속에서<br>가장 그리웠던 것은 거창한 음식이 아니라<br><mark>누군가 차려주던 따뜻한 한 끼였습니다.</mark></p>
+    <p class="story-para">늦은 밤 불 꺼진 원룸에 돌아왔을 때,<br>편의점 음식으로 끼니를 채우던 날들 속에서<br>문득 떠오르던 건 고향의 바다 냄새와<br>어머니의 밥상이었습니다.</p>
+    <p class="story-para">'어부의 식탁'은 그런 마음에서 시작되었습니다.<br><mark>혼자여도 따뜻하게,</mark><br>바쁜 하루 속에서도 제대로 된 한 끼를 먹을 수 있도록.<br>바다에서 온 신선한 재료와<br>집밥의 온기를 담아<br>오늘도 누군가의 하루를 다정하게 안아주고 싶었습니다.</p>
+  </div>
+</div>
+
+<!-- 6) 이미지 3 -->
+<div class="story-img-wrap reveal">
+  <img src="./story/3_fishtable.png" alt="어부의 식탁">
+</div>
+
+<!-- 7) 마지막 단락 -->
+<div class="story-col">
+  <div class="story-para-group reveal">
+    <p class="story-para">우리는 단순히 음식을 만드는 브랜드가 아닙니다.<br>서울에서 각자의 삶을 버텨내고 있는<br>2030 자취생과 사회초년생들에게<br>작지만 따뜻한 위로를 전하고자 합니다.</p>
+    <p class="story-para">오늘 하루도 고생한 당신의 식탁에,<br>조금의 온기와 그리움을 담아.</p>
+  </div>
+</div>
+
+<!-- 8) 클로징 -->
+<div class="story-closing reveal">
+  <img src="fishtable_logo.png" alt="어부의식탁" class="story-closing-logo">
+  <p class="story-closing-slogan">바다를 담아, 온기를 전하다</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <img src="fishtable_logo.png" alt="어부의식탁" class="logo-img">
+          <span class="logo-text-wrap">
+            <span class="logo-name">어부의식탁</span>
+            <span class="logo-tagline">바다를 담아, 온기를 전하다</span>
+          </span>
+        </div>
+        <p class="footer-desc">바다의 신선함과 땅의 영양을 모아<br>여러분의 식탁으로 건강함을 전합니다.</p>
+      </div>
+      <div class="fcol">
+        <p class="fcol-title">NAVIGATE</p>
+        <ul>
+          <li><a href="story.html">STORY</a></li>
+          <li><a href="fishtable_index3.html#shop">SHOP</a></li>
+          <li><a href="fishtable_index3.html#event">EVENT</a></li>
+          <li><a href="fishtable_index3.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <p class="fcol-title">ACCOUNT</p>
+        <ul>
+          <li><a href="#">로그인</a></li>
+          <li><a href="mypage.html">회원가입</a></li>
+          <li><a href="#">지난 식탁 기록</a></li>
+          <li><a href="mypage.html">마이페이지</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <p class="fcol-title">CUSTOMER SERVICE</p>
+        <p class="fcontact"><strong>070-8648-2403</strong></p>
+        <p class="fcontact">AM 9:00 — PM 6:00</p>
+        <p class="fcontact">주말 · 공휴일 휴무</p>
+        <br>
+        <p class="fcontact">IBK기업은행 008-160965-01-011</p>
+        <p class="fcontact">예금주 (주)어부의 식탁</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">(주)어부의 식탁 · 대표 홍유식 · 사업자등록번호 875-81-01829 · 통신판매업신고 제 2022-서울도봉-0787호<br>서울특별시 도봉구 마들로 684-19 (도봉동) 서원상가 301호 · © 2025 Fish Table. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">이용안내</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('revealed'); observer.unobserve(e.target); }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>
